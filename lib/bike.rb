@@ -1,7 +1,7 @@
 class Bike
 
 	def initialize
-@docked = false
+		@docked = false
 	end
 
 
