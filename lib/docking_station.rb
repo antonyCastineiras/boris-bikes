@@ -1,3 +1,5 @@
+require_relative 'bike.rb'
+
 class DockingStation
 
 		def initialize
@@ -12,6 +14,7 @@ class DockingStation
     end
 
     def dock(bike)
+        if @bike then raise 'Dock station is full' end
     	@bike = bike
     end
 end
