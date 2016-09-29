@@ -1,8 +1,9 @@
-class Van
-    def collect_broken_bikes
-    end
+require 'bike_container.rb'
+
+class Van < BikeContainer
     
-    def deliver_broken_bikes
+    
+    def release_broken_bike
     end
 
     def collect_working_bikes

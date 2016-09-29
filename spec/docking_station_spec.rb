@@ -8,41 +8,41 @@ describe DockingStation do
   end
 
   describe '#release_bike' do
-    it { is_expected.to respond_to :release_bike }
+    it { is_expected.to respond_to :release_working_bike }
 
     it 'releases working bike' do
-      subject.dock(@bike)
-      expect(subject.release_bike).to eq @bike
+      subject.receive_bike(@bike)
+      expect(subject.release_working_bike).to eq @bike
     end
   end
 
 
   describe '#dock' do
-    it { is_expected.to respond_to(:dock).with(1).argument}
+    it { is_expected.to respond_to(:receive_bike).with(1).argument}
 
     it 'docks something' do
-      expect(subject.dock(@bike)[-1]).to eq @bike
+      expect(subject.receive_bike(@bike)[-1]).to eq @bike
     end
     
     it 'returns docked bikes' do
-      subject.dock(@bike)
-      expect(subject.release_bike).to eq @bike
+      subject.receive_bike(@bike)
+      expect(subject.release_working_bike).to eq @bike
     end
 
     it 'raises an error when full' do
-      subject.capacity.times{ subject.dock @bike }
-      expect { subject.dock @bike }.to raise_error 'Docking Station Full'
+      subject.capacity.times{ subject.receive_bike @bike }
+      expect { subject.receive_bike @bike }.to raise_error 'Unable to hold more bikes'
     end
 
     it 'doesn\'t release broken bikes' do
-      subject.dock(@bike,true)
-      expect{ subject.release_bike }.to raise_error "No working bikes available"
+      subject.receive_bike(@bike,true)
+      expect{ subject.release_working_bike }.to raise_error "No working bikes available"
     end
   end
 
   describe '#release_bike' do
       it 'raises an error when empty' do
-        expect { subject.release_bike }.to raise_error 'No working bikes available'
+        expect { subject.release_working_bike }.to raise_error 'No working bikes available'
       end
     end
 
