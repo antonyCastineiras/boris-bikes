@@ -1,3 +1,5 @@
+require 'van.rb'
+
 describe Van do 
 
 	it { is_expected.to respond_to :collect_broken_bikes }
