@@ -34,7 +34,7 @@ describe DockingStation do
     end
 
     it 'doesn\'t release broken bikes' do
-    subject.dock(Bike.new,false)
+    subject.dock(Bike.new,true)
     expect{ subject.release_bike }.to raise_error "No working bikes available"
     end
 

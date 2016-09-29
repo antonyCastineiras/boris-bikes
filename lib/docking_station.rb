@@ -16,13 +16,13 @@ class DockingStation
     @bikes.pop
   end
 
-  def dock(bike,working=bike.working)
+  def dock(bike,broken=bike.broken?)
     fail 'Docking Station Full' if full?
-    bike.working = working
-    if bike.working == true
-      @bikes << bike
-    else
+    if broken
+      bike.report_broken
       @broken_bikes << bike
+    else
+      @bikes << bike
     end
   end
 
@@ -37,6 +37,6 @@ class DockingStation
   end
 
   def full?
-    @bikes.count >= @capacity
+    @bikes.count + @broken_bikes.count >= @capacity
   end
 end
