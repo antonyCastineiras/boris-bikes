@@ -2,8 +2,9 @@ require 'docking_station'
 
 
 describe DockingStation do
+
   before(:each) do
-    @bike = double(:bike)
+    @bike = double(:bike, broken?: false, report_broken: true)   
   end
 
   describe '#release_bike' do
