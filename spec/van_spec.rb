@@ -1,4 +1,4 @@
-require 'van.rb'
+require 'van'
 
 describe Van do 
 
